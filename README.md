@@ -8,7 +8,6 @@ In order to run this app you must install the following packages:
 * [**DOCKER**](https://www.docker.com/)
 * [**VUE CLI**](https://cli.vuejs.org/guide/installation.html)
 * [**PRISMA CLI**](https://www.prisma.io/docs/get-started/01-setting-up-prisma-new-database-JAVASCRIPT-a002/#install-the-prisma-cli)
-* [**GRAPHIKMAGICK**](https://github.com/aheckmann/gm)
 
 ### 1. Clone this repository
 ```sh
