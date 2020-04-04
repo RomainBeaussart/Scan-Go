@@ -1,0 +1,11 @@
+query ScansUser($id: ID!){
+    scans(where:{
+        user: {
+            id: $id
+        }
+    }){
+        id
+        name
+        updatedAt
+    }
+}

@@ -1,0 +1,10 @@
+mutation CreatePlayer($gameID: ID!){
+    createPlayer(data: {
+        game: { connect: { id: $gameID } },
+        points: 0
+    }) {
+        id
+        name
+        avatar
+    }
+}

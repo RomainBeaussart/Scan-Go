@@ -1,0 +1,18 @@
+mutation UpsertPlayer($id: ID, $name: String, $avatar: Int, $gameID: ID) {
+    upsertPlayer(
+        where: {
+            id: $id,
+        },
+        create: {
+            game: { connect: { id: $gameID } },
+            name: $name,
+            avatar: $avatar
+        },
+        update: {
+            name: $name,
+            avatar: $avatar
+        }
+    ) {
+        id
+    }
+}

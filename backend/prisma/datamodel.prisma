@@ -1,0 +1,75 @@
+enum Sexe {
+    MALE
+    FEMALE
+    OTHER
+}
+
+enum QuestionTypes {
+    PROPOSALS
+    TEXT
+}
+
+type User {
+    id: ID! @id
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+    email: String @unique
+    password: String
+    firstname: String
+    lastname: String
+    birthday: DateTime
+    sexe: Sexe
+    scans: [Scan!] @relation(name: "UserScans", onDelete: CASCADE)
+}
+
+type Scan {
+    id: ID! @id
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+    name: String!
+    description: String
+    questions: [Question!] @relation(name: "ScanQuestions", onDelete: CASCADE)
+    user: User! @relation(name: "UserScans")
+    game: Game @relation(name: "GameScan")
+    duration: DateTime
+}
+
+type Question {
+    id: ID! @id
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+    question: String!
+    type: QuestionTypes!
+    proposals: [String!] @scalarList(strategy: RELATION)
+    answer: Float!
+    scan: Scan! @relation(name: "ScanQuestions")
+}
+
+type Game {
+    id: ID! @id
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+    players: [Player!] @relation(name: "GamePlayer")
+    scan: Scan @relation(name: "GameScan" link: INLINE)
+    admin: User @relation(name: "GameAdmin" link: INLINE)
+}
+
+type Player {
+    id: ID! @id
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+    name: String
+    game: Game @relation(name: "GamePlayer")
+    avatar: Int! @default(value: 0)
+    points: Int! @default(value: 0)
+    questionsAnswered: [Question] @relation(name: "PlayerQuestions")
+}
+
+type PendingValidation {
+    id: ID! @id
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+    question: Question ! @relation(name: "QuestionPendingValidation" link: INLINE)
+    answer: String!
+    player: Player! @relation(name: "PlayerPendingValidation" link: INLINE)
+}

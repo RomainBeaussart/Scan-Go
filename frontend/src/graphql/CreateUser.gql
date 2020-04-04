@@ -1,0 +1,13 @@
+mutation CreateUser (
+    $password: String!, $firstname: String, $lastname: String,
+    $email: String!
+    ) {
+        signup(
+            data: {
+                password: $password
+                firstname: $firstname
+                lastname: $lastname
+                email: $email,
+            }
+        ) { id }
+    }

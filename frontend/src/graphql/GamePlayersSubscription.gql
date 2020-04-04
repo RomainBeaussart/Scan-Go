@@ -1,0 +1,19 @@
+subscription GamePlayersSubscription($gameId: ID!){
+    player(where: {
+        mutation_in: [UPDATED, CREATED]
+        node:{
+            game: {id: $gameId }
+        }
+    }) {
+        node {
+            id
+            createdAt
+            name
+            avatar
+            points
+            questionsAnswered{
+                id
+            }
+        }
+    }
+}

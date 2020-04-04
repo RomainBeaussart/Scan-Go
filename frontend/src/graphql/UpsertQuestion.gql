@@ -1,0 +1,23 @@
+mutation UpsertQuestion($id: ID, $question: String!, $type: QuestionTypes!,
+    $answer: Float!, $proposals: [String!], $scanId: ID!) {
+    upsertQuestion(
+        where: {
+            id: $id,
+        },
+        create: {
+            question: $question,
+            type: $type,
+            answer: $answer,
+            proposals: {set: $proposals},
+            scan: {connect: {id: $scanId}}
+        },
+        update: {
+            question: $question,
+            type: $type,
+            answer: $answer,
+            proposals: { set: $proposals },
+        }
+    ) {
+        id
+    }
+}

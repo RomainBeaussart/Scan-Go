@@ -1,0 +1,10 @@
+query Question($id: ID!){
+    question(where: {
+        id: $id
+    }){
+        id
+        question
+        type
+        proposals
+    }
+}

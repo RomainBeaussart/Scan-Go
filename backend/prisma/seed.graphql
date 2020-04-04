@@ -1,0 +1,41 @@
+mutation {
+
+    ### Users
+user1: createUser(data: {
+    firstname: "Romain"
+    lastname: "Beaussart"
+    password: "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"
+    email: "r.beaussart62@gmail.com"
+}) { id }
+
+game: createGame( data: {
+    scan: {
+        create: {
+            name: "Game1"
+            description: "Desc Game1"
+            questions: { create: [
+                {
+                    question: "Question 1"
+                    type: PROPOSALS
+                    proposals: { 
+                        set: ["Reponse 1", "Reponse 2", "Reponse 3", "Response 4"] 
+                    }
+                    answer: 1
+                },
+                {
+                    question: "Question 2"
+                    type: PROPOSALS
+                    proposals: { 
+                        set: ["Reponse 1", "Reponse 2", "Reponse 3", "Response 4"] 
+                    }
+                    answer: 0
+                }
+            ]}
+            user: { connect: { email: "r.beaussart62@gmail.com" } }
+        }
+    }
+    admin: { connect: { email: "r.beaussart62@gmail.com" } }
+}) {
+    id
+}
+}

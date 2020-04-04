@@ -1,0 +1,9 @@
+mutation CreateScan($id: ID!, $name:String!, $description: String) {
+    createScan(data: {
+        name: $name
+        description: $description
+        user: {connect: {id: $id}}
+    }) {
+        id
+    }
+}

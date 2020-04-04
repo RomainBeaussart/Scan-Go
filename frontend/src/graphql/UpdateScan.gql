@@ -1,0 +1,6 @@
+mutation UpdateScan($id: ID, $scan: ScanUpdateInput!) {
+    updateScan(
+        where: { id: $id }
+        data: $scan
+    ){ id }
+}

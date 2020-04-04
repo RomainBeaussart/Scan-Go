@@ -1,0 +1,18 @@
+query Scan($id: ID!){
+    scan(where: {
+        id: $id
+    }) {
+        id
+        name
+        questions {
+            id
+            question
+            type
+            proposals
+            answer
+        }
+        user{
+            id
+        }
+    }
+}

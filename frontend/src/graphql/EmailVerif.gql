@@ -1,0 +1,8 @@
+query EmailVerif($email: String) {
+
+    email: usersConnection(where: { email: $email }) {
+        aggregate {
+            count
+        }
+    }
+}

@@ -1,0 +1,5 @@
+query ($questionId:ID!, $playerId:ID!, $answerIndex: Int!) {
+    sendResponse(data: { questionId: $questionId, playerId: $playerId, answerIndex: $answerIndex }) {
+        answer
+    }
+}

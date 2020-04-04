@@ -1,0 +1,17 @@
+query GamePlayer($gameId: ID){
+    players(where: {
+        game: {
+            id: $gameId
+        }
+    })
+    {
+        id
+        createdAt
+        name
+        avatar
+        points
+        questionsAnswered{
+            id
+        }
+    }
+}

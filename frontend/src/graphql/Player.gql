@@ -1,0 +1,20 @@
+query Player($id: ID!){
+    player(where: {
+        id: $id
+    }){
+        createdAt
+        id
+        name
+        points
+        avatar
+        game {
+            scan {
+                name
+                description
+            }
+        }
+        questionsAnswered{
+            id
+        }
+    }
+}

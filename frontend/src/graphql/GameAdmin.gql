@@ -1,0 +1,11 @@
+query GameAdmin ($id: ID!){
+    games(where:{
+        admin:{id: $id}
+    }){
+        id
+        scan{
+            name
+            id
+        }
+    }
+}

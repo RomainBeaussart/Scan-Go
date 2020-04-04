@@ -1,0 +1,12 @@
+mutation CreateGame ($scanId: ID!, $adminId: ID!){
+    createGame(data:{
+        scan: {connect: {id: $scanId}}
+        admin: {connect: {id: $adminId}}
+    }){
+        id
+        scan {
+            name
+            id
+        }
+    }
+}
